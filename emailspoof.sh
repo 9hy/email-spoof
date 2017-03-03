@@ -205,26 +205,27 @@ echo '2) Iniciar suplantacaión'
 read opcion
 case $opcion in 
 	1)
-		clear
-		Banner
-		echo 'Digite el DOMINIO el cual decea analizar'
-		read dom 
-		clear
-		Banner
-		#consultaDns = dig $dom txt
-		if [ consulta~all ];
-			then
-	  		echo "Este Dominio Se ecncuentra con una configuración ´~all´ en los DNS's del servidor de correo,lo que quiere decir que existen posibilidades de que no funcione, todo va a depender del servido de correo que resiva el correo"
-			enterInicial	  	
-	  	elif [consulta-all];
-  			then
-  			echo "Este correo se encuentra con una configuracion ´-all´ en los DNS's lo que quiere decir que este correo no podra utilizarce para realizar Email Spoofing"
- 			enterInicial
-  		else
-  			echo "Este correo es vulnerable y si se podra realizar ataques de Email Spoofing"
-  			enterInicial
-	fi
-	;;
+	echo 'en construcción'
+	#	clear
+	#	Banner
+	#	echo 'Digite el DOMINIO el cual decea analizar'
+	#	read dom 
+	#	clear
+	#	Banner
+	#	#consultaDns = dig $dom txt
+	#	if [ consulta~all ];
+	#		then
+	# 		echo "Este Dominio Se ecncuentra con una configuración ´~all´ en los DNS's del servidor de correo,lo que quiere decir que existen posibilidades de que no funcione, todo va a depender del servido de correo que resiva el correo"
+	#		enterInicial	  	
+	# 	elif [consulta-all];
+  	#		then
+  	#		echo "Este correo se encuentra con una configuracion ´-all´ en los DNS's lo que quiere decir que este correo no podra utilizarce para realizar Email Spoofing"
+ 	#		enterInicial
+  	#	else
+  	#		echo "Este correo es vulnerable y si se podra realizar ataques de Email Spoofing"
+  	#		enterInicial
+	#fi
+	#;;  
 	2)
 		clear
 		Banner
