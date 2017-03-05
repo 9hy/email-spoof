@@ -9,16 +9,26 @@ echo '*****************************************************'
 
 consulta~all(){
 
-dig $dom txt ??  ~all
+dig $dom txt | grep ~all
+echo "Este Dominio Se ecncuentra con una configuración ´~all´ en los DNS's del servidor de correo,lo que quiere decir que existen posibilidades de que no funcione, todo va a depender del servido de correo que resiva el correo"
+enterInicial
 
 }
 consulta-all(){
 
 dig $dom txt | grep -all
+echo "Este correo se encuentra con una configuracion ´-all´ en los DNS's lo que quiere decir que este correo no podra utilizarce para realizar Email Spoofing"
+enterInicial
+
+}
+consultaAll(){
+dig $dom txt | grep ?all
+echo 'Informacion no encontrada'
+enterInicial
 
 }
 enterInicial(){
-echo 'Precione ENTER para volver al menu Principal'
+echo -e '\e[96mPrecione ENTER para volver al menu Principal'
 read ENTER  
 case $ENTER in 
 	*)
@@ -152,7 +162,7 @@ case $comun in
 			do 
 				echo 'Destinatario -->' $destino	
 		done
-		echo '¿Esta su lista completa?'
+		echo '¿Esta su lista completa? [s/n]'
 		read completa [s/n]
 		case $completa in
 			s)
@@ -205,27 +215,24 @@ echo '2) Iniciar suplantacaión'
 read opcion
 case $opcion in 
 	1)
-	echo 'en construcción'
-	#	clear
-	#	Banner
-	#	echo 'Digite el DOMINIO el cual decea analizar'
-	#	read dom 
-	#	clear
-	#	Banner
-	#	#consultaDns = dig $dom txt
-	#	if [ consulta~all ];
-	#		then
-	# 		echo "Este Dominio Se ecncuentra con una configuración ´~all´ en los DNS's del servidor de correo,lo que quiere decir que existen posibilidades de que no funcione, todo va a depender del servido de correo que resiva el correo"
-	#		enterInicial	  	
-	# 	elif [consulta-all];
-  	#		then
-  	#		echo "Este correo se encuentra con una configuracion ´-all´ en los DNS's lo que quiere decir que este correo no podra utilizarce para realizar Email Spoofing"
- 	#		enterInicial
-  	#	else
-  	#		echo "Este correo es vulnerable y si se podra realizar ataques de Email Spoofing"
-  	#		enterInicial
-	#fi
-	#;;  
+		clear
+		Banner
+		echo 'Digite el DOMINIO el cual decea analizar'
+		read dom 
+		clear
+		Banner
+		dig $dom txt | grep all
+		#consultaDns = dig $dom txt
+		echo
+		echo
+		echo -e '\e[91mLas consultas que terminen con "~all" quieren decir que existen posibilidades de que el Email sea aceptado, pero tamquien que no sea aceptado, todo depende del servidor de llegada'
+		echo
+		echo 'Las consultas que terminen con -all quiere decir que de que no se aceptara este correo'
+		echo
+		echo 'Cualquier otra funcionara correctamente' 
+		echo
+		enterInicial
+	;;
 	2)
 		clear
 		Banner
